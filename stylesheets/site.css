@@ -1,0 +1,129 @@
+nav { 
+  text-align: left;
+  position: fixed;
+}
+
+.blurb {
+  font-style: italic;
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+  nav { 
+    position: relative; 
+    text-align: center;
+  }
+  nav > ul li { 
+    display: inline; 
+  } 
+  h4.hide_small {
+    display: none;
+  }
+
+  .two.columns.hide_small {
+    display: none;
+  }
+}
+ul.section_links {
+    margin-top: -15px;
+    text-align: right;
+}
+.section_links > li {
+  padding-left: 8px;
+  display: inline;
+}
+
+img.sep {
+  margin-bottom: 16px;
+}
+  
+body {
+  color: #000;
+  font-size: 16px;
+  font-family: "Palatino Linotype",
+               Palatino,
+               "URW Palladio L",
+               "Book Antiqua",
+               Baskerville,
+               "Bookman Old Style",
+               "Bitstream Charter",
+               "Nimbus Roman No9 L",
+               Garamond,
+               "New Century Schoolbook",
+               "Century Schoolbook",
+               "Century Schoolbook L",
+               Georgia,
+               serif;
+}
+
+h3 {
+  margin-top: 20px;
+  text-align: center;
+}
+h3:before {
+  padding-right: 15px;
+  content: url('/images/flwr_l.png');
+}
+
+h3:after {
+  padding-left: 15px;
+  content: url('/images/flwr_r.png');
+}
+
+h2 {
+  margin-top: 36px;
+}
+
+h2, h3 {
+  font-family: 'IM Fell DW Pica', serif;
+}
+
+#footer {
+  margin-top: 60px;
+  text-align: center;
+  color: #333;
+}
+
+.tweet_time,.post_date {
+  font-style: italic;
+}
+
+.post_date {
+  margin-right: 5px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: normal;
+}
+input[type='text'], input[type='email'], textarea {
+  width: 95%;
+}
+textarea {
+  resize: vertical;
+}
+
+button {
+  margin-left: 80%;
+}
+
+#form_post {
+  display: none;
+}
+#form_error {
+  margin-bottom: -20px;
+  text-align: left;
+}
+.fail {
+  color: red;
+}
+
+#form_submit {
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 85%;
+}
+
+.beer_details {
+  display: block;
+}
