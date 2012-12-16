@@ -7,10 +7,9 @@
   <!--<![endif]-->
   <head>
     <meta charset='utf-8' />
-    <title>nullmethod - Greg Ose</title>
+    <title>nullmethod - Greg Ose / Beer Inventory</title>
     <meta content="Greg Ose's Blog and Website" name='description' />
     <meta content='Greg Ose' name='author' />
-    <base target='_blank' />
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     <![endif]-->
@@ -19,56 +18,47 @@
     <link href="/stylesheets/layout.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/skeleton.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="/stylesheets/site.css" media="screen" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica" media="screen" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono|Vollkorn|Lato:700,900" media="screen" rel="stylesheet" type="text/css" />
     <link href="/images/favicon.png" rel="icon" type="image/png" />
   </head>
   <body>
     <div class='container'>
       <div class='sixteen columns'>
   <nav class='four columns'>
-    <h2>nullmethod</h2>
+    <h2>
+      <a href='/'>nullmethod</a>
+    </h2>
+    <h5 class='nav-name'>
+      Greg Ose
+    </h5>
     <div class='blurb'>
-      Greg Ose's musing about application security, beer, espresso, and electronics
+      Musing about application security, beer, espresso, and electronics
     </div>
     <ul>
       <li>
-        <a class='scroll' href='/#presentations'>Presentations</a>
+        <a href='/'>About</a>
       </li>
       <li>
-        <a class='scroll' href='/#publications'>Publications</a>
+        <a href='/work'>Work</a>
       </li>
       <li>
-        <a class='scroll' href='/#projects'>Projects</a>
+        <a href='/blog'>Blog</a>
       </li>
       <li>
-        <a class='scroll' href='/#disclosures'>Disclosures</a>
-      </li>
-      <li>
-        <a class='scroll' href='/#more'>Further Reading</a>
-      </li>
-      <li>
-        <a class='scroll' href='/#contact'>Contact</a>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <a href='/beer' target='_self'>Beer Inventory</a>
-      </li>
-      <li>
-        <a href='/blog' target='_self'>Blog</a>
+        <a href='/beer'>Beer Inventory</a>
       </li>
     </ul>
   </nav>
 </div>
       <!-- Mustache templates -->
       <script id='beer' type='text/html'>
-        {{#feed.entry}}
+        {{#filteredEntries}}
         <div class='beer_entry'>
-          <div class='ten columns offset-by-four'>
-            <a href='#expand'>{{gsx$brewery.$t}} - {{gsx$beer.$t}} / {{gsx$year.$t}}</a>
+          <div class='nine columns offset-by-four'>
+            <a class='beer_label' href='#'>{{brewery}} - {{beer}} / {{year}}</a>
           </div>
-          <div class='two columns hide_small'>
-            {{gsx$addedon.$t}}
+          <div class='three columns hide_small'>
+            {{sortField}}
           </div>
         </div>
         <div class='beer_details'>
@@ -76,127 +66,85 @@
             <strong>
               Batch:
             </strong>
-            {{gsx$batchrelease.$t}}
+            {{batch}}
           </div>
           <div class='three columns'>
             <strong>
               Style:
             </strong>
-            {{gsx$style.$t}}
+            {{style}}
           </div>
           <div class='three columns'>
             <strong>
               Format:
             </strong>
-            {{gsx$format.$t}}
+            {{format}}
           </div>
           <div class='three columns'>
             <strong>
               ABV:
             </strong>
-            {{gsx$abv.$t}}
+            {{abv}}
           </div>
           <div class='three columns offset-by-four'>
             <strong>
               # On Hand:
             </strong>
-            {{gsx$available.$t}}
+            {{available}}
           </div>
-          <div class='three columns'>
-            <strong>
-              # Consumed:
-            </strong>
-            {{gsx$consumed.$t}}
-          </div>
-          <div class='six columns'>
+          <div class='nine columns'>
             <strong>
               Notes:
             </strong>
-            {{gsx$notes.$t}}
+            {{notes}}
           </div>
         </div>
-        {{/feed.entry}}
+        {{/filteredEntries}}
       </script>
       <div class='twelve columns offset-by-four' id='beer'>
         <h3>Beer Inventory</h3>
       </div>
-      <div class='ten columns offset-by-four'>
-        <h4 class='hide_small'>
+      <div class='nine columns offset-by-four'>
+        <h4>
           Beer
+          <a class='icon' href='#' id='beer_search_icon'>&#128269;</a>
+          <div id='search_div'>
+            <input id='beer_search' placeholder='Search' type='text' />
+          </div>
         </h4>
       </div>
-      <div class='two columns'>
-        <h4 class='hide_small'>
-          Added
+      <div class='three columns'>
+        <h4>
+          <a href='#' id='beer_sort'>Added</a>
+          <ul id='beer_sort_list'>
+            <li>
+              <a data-sort='added' href='#'>Added</a>
+            </li>
+            <li>
+              <a data-sort='brewery' href='#'>Brewery</a>
+            </li>
+            <li>
+              <a data-sort='beer' href='#'>Beer</a>
+            </li>
+            <li>
+              <a data-sort='year' href='#'>Vintage</a>
+            </li>
+            <li>
+              <a data-sort='style' href='#'>Style</a>
+            </li>
+            <li>
+              <a data-sort='abv' href='#'>ABV</a>
+            </li>
+            <li>
+              <a data-sort='available' href='#'># Available</a>
+            </li>
+          </ul>
+          <a class='icon' data-sort='desc' herf='#' id='beer_sort_direction'>&#59228;</a>
         </h4>
       </div>
-      <div id='beers'>
-        <div class='ten columns offset-by-four'>
-          <a class='beer' href='#expand'>Pipeworks - Abduction / 2010</a>
-        </div>
-        <div class='two columns hide_small'>
-          09/20/2012
-        </div>
-        <div class='ten columns offset-by-four'>
-          <a href='#expand'>Three Floyds - Dark Lord / 2010</a>
-        </div>
-        <div class='two columns hide_small'>
-          09/20/2012
-        </div>
-        <div class='ten columns offset-by-four'>
-          <a href='#expand'>Pipeworks - Abduction / 2010</a>
-        </div>
-        <div class='two columns hide_small'>
-          09/20/2012
-        </div>
-        <div class='three columns offset-by-four'>
-          <strong>
-            Batch:
-          </strong>
-          #41
-        </div>
-        <div class='three columns'>
-          <strong>
-            Style:
-          </strong>
-          American Double / Imperial Stout
-        </div>
-        <div class='three columns'>
-          <strong>
-            Format:
-          </strong>
-          22oz
-        </div>
-        <div class='three columns'>
-          <strong>
-            ABV:
-          </strong>
-          10.50%
-        </div>
-        <div class='three columns offset-by-four'>
-          <strong>
-            # On Hand:
-          </strong>
-          1
-        </div>
-        <div class='three columns'>
-          <strong>
-            # Consumed:
-          </strong>
-          1
-        </div>
-        <div class='six columns'>
-          <strong>
-            Notes:
-          </strong>
-          Here are some of my tasting notes...
-        </div>
-        <div class='ten columns offset-by-four'>
-          <a href='#expand'>Three Floyds - Dark Lord / 2010</a>
-        </div>
-        <div class='two columns'>
-          09/20/2012
-        </div>
+      <div id='beers'></div>
+      <div class='twelve columns offset-by-four' id='footer'>
+        <p>&#169; 2012 Greg Ose</p>
       </div>
     </div>
     <script src="/javascripts/app.js" type="text/javascript"></script>
