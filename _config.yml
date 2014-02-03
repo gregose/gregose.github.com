@@ -1,0 +1,26 @@
+# Pages
+safe: true
+lsi: false
+
+exclude: ["Gemfile", "Gemfile.lock", "README.md"]
+
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            nullmethod
+tagline:          'Greg Ose'
+description:      "<a href='https://github.com/gregose' target='_blank'>@gregose</a> on GitHub</br><a href='https://twitter.com/gose1' target='_blank'>@gose1</a> on Twitter"
+url:              http://nullmethod.com
+
+author:
+  name:           'Greg Ose'
+
+paginate:         5
+
+github:
+  repo:           https://github.com/gregose/gregose.github.com
