@@ -5,7 +5,7 @@ title: Work
 
 ## Some of the things I've done. 
 
-Read more about my talks, publications, projects, and public vulnerability disclosures.
+Read more about my talks, publications, [projects](https://github.com/gregose), and public vulnerability disclosures.
 
 <h2>Talks</h2>
 <ul class="related-posts">
