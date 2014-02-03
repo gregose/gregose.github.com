@@ -10,4 +10,4 @@ Direct object reference in Punchd to allow the unauthorized modification of othe
 
 ### More Info
 
-* [Google HoF](http://www.google.com/corporate/halloffame.html)
+* [Google HoF](http://www.google.com/about/appsecurity/hall-of-fame/reward/)

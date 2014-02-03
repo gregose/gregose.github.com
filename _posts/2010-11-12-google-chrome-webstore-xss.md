@@ -10,4 +10,4 @@ Stored XSS in Chrome Web Store.
 
 ### More Info
 
-* [Google HoF](http://www.google.com/corporate/halloffame.html)
+* [Google HoF](http://www.google.com/about/appsecurity/hall-of-fame/reward/)
