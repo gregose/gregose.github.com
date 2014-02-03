@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About
+sitemap: true
 ---
 
 I do application security at GitHub. Breaking things, building things, making GitHub applications more secure.

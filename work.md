@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Work
+sitemap: true
 ---
 
 ## Some of the things I've done. 
