@@ -6,7 +6,7 @@ vulnerability: Arbitrary file write
 category: disclosure
 ---
 
-Because Jekyll was sanitizing file paths prior to URL decoding the file path, it was possible to set a permalink to write a generated page outside of the output directory. This is not an issue for most users of Jekyll, it is if you are GitHub and build users' sites for [pages.github.com](http://pages.github.com).
+Because Jekyll was sanitizing file paths prior to URL decoding the path, it was possible to set a permalink to write a generated page outside of the output directory. This is not an issue for most users of Jekyll. It *is* if you are GitHub and build users' sites for [pages.github.com](http://pages.github.com).
 
 ### More Info
 
